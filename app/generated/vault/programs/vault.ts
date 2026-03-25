@@ -23,17 +23,17 @@ import {
   type ParsedWithdrawInstruction,
 } from "../instructions";
 
-export const VAULT_PROGRAM_ADDRESS =
+export const journal_PROGRAM_ADDRESS =
   "4bZpyY88kqnuKWjAQsH58t7rFogyfdCtuuo4bYb7NnjE" as Address<"4bZpyY88kqnuKWjAQsH58t7rFogyfdCtuuo4bYb7NnjE">;
 
-export enum VaultInstruction {
+export enum journalInstruction {
   Deposit,
   Withdraw,
 }
 
-export function identifyVaultInstruction(
+export function identifyjournalInstruction(
   instruction: { data: ReadonlyUint8Array } | ReadonlyUint8Array,
-): VaultInstruction {
+): journalInstruction {
   const data = "data" in instruction ? instruction.data : instruction;
   if (
     containsBytes(
@@ -44,7 +44,7 @@ export function identifyVaultInstruction(
       0,
     )
   ) {
-    return VaultInstruction.Deposit;
+    return journalInstruction.Deposit;
   }
   if (
     containsBytes(
@@ -55,39 +55,39 @@ export function identifyVaultInstruction(
       0,
     )
   ) {
-    return VaultInstruction.Withdraw;
+    return journalInstruction.Withdraw;
   }
   throw new Error(
-    "The provided instruction could not be identified as a vault instruction.",
+    "The provided instruction could not be identified as a journal instruction.",
   );
 }
 
-export type ParsedVaultInstruction<
+export type ParsedjournalInstruction<
   TProgram extends string = "4bZpyY88kqnuKWjAQsH58t7rFogyfdCtuuo4bYb7NnjE",
 > =
   | ({
-      instructionType: VaultInstruction.Deposit;
+      instructionType: journalInstruction.Deposit;
     } & ParsedDepositInstruction<TProgram>)
   | ({
-      instructionType: VaultInstruction.Withdraw;
+      instructionType: journalInstruction.Withdraw;
     } & ParsedWithdrawInstruction<TProgram>);
 
-export function parseVaultInstruction<TProgram extends string>(
+export function parsejournalInstruction<TProgram extends string>(
   instruction: Instruction<TProgram> & InstructionWithData<ReadonlyUint8Array>,
-): ParsedVaultInstruction<TProgram> {
-  const instructionType = identifyVaultInstruction(instruction);
+): ParsedjournalInstruction<TProgram> {
+  const instructionType = identifyjournalInstruction(instruction);
   switch (instructionType) {
-    case VaultInstruction.Deposit: {
+    case journalInstruction.Deposit: {
       assertIsInstructionWithAccounts(instruction);
       return {
-        instructionType: VaultInstruction.Deposit,
+        instructionType: journalInstruction.Deposit,
         ...parseDepositInstruction(instruction),
       };
     }
-    case VaultInstruction.Withdraw: {
+    case journalInstruction.Withdraw: {
       assertIsInstructionWithAccounts(instruction);
       return {
-        instructionType: VaultInstruction.Withdraw,
+        instructionType: journalInstruction.Withdraw,
         ...parseWithdrawInstruction(instruction),
       };
     }

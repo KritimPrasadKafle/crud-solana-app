@@ -1,6 +1,6 @@
 # crud
 
-Next.js starter with Tailwind CSS, `@solana/react-hooks`, and an Anchor vault program example.
+Next.js starter with Tailwind CSS, `@solana/react-hooks`, and an Anchor journal program example.
 
 ## Getting Started
 
@@ -13,12 +13,12 @@ npm install   # Builds program and generates client automatically
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000), connect your wallet, and interact with the vault on devnet.
+Open [http://localhost:3000](http://localhost:3000), connect your wallet, and interact with the journal on devnet.
 
 ## What's Included
 
 - **Wallet connection** via `@solana/react-hooks` with auto-discovery
-- **SOL Vault program** - deposit and withdraw SOL from a personal PDA vault
+- **SOL journal program** - deposit and withdraw SOL from a personal PDA journal
 - **Codama-generated client** - type-safe program interactions using `@solana/kit`
 - **Tailwind CSS v4** with light/dark mode
 
@@ -38,17 +38,17 @@ Open [http://localhost:3000](http://localhost:3000), connect your wallet, and in
 ├── app/
 │   ├── components/
 │   │   ├── providers.tsx      # Solana client setup
-│   │   └── vault-card.tsx     # Vault deposit/withdraw UI
-│   ├── generated/vault/       # Codama-generated program client
+│   │   └── journal-card.tsx     # journal deposit/withdraw UI
+│   ├── generated/journal/       # Codama-generated program client
 │   └── page.tsx               # Main page
 ├── anchor/                    # Anchor workspace
-│   └── programs/vault/        # Vault program (Rust)
+│   └── programs/journal/        # journal program (Rust)
 └── codama.json                # Codama client generation config
 ```
 
-## Deploy Your Own Vault
+## Deploy Your Own journal
 
-The included vault program is already deployed to devnet. To deploy your own:
+The included journal program is already deployed to devnet. To deploy your own:
 
 ### Prerequisites
 
@@ -97,7 +97,7 @@ npm run anchor-build   # Build the program first
 npm run anchor-test    # Run tests
 ```
 
-The tests are in `anchor/programs/vault/src/tests.rs` and automatically use the program ID from `declare_id!`.
+The tests are in `anchor/programs/journal/src/tests.rs` and automatically use the program ID from `declare_id!`.
 
 ## Regenerating the Client
 

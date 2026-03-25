@@ -13,7 +13,7 @@
     "setup": "npm run anchor-build && npm run codama:js",
     "start": "next start"
   },
-  "description": "Next.js, Tailwind, @solana/react-hooks, Anchor vault program",
+  "description": "Next.js, Tailwind, @solana/react-hooks, Anchor journal program",
   "keywords": [
     "anchor",
     "kit",
@@ -26,12 +26,20 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "@coral-xyz/anchor": "^0.32.1",
     "@solana/client": "^1.2.0",
     "@solana/kit": "^5.1.0",
     "@solana/react-hooks": "^1.1.5",
+    "@solana/wallet-adapter-react": "^0.15.39",
+    "@solana/wallet-adapter-react-ui": "^0.9.39",
+    "@solana/wallet-adapter-wallets": "^0.19.37",
+    "@solana/web3.js": "^1.98.4",
+    "@tanstack/react-query": "^5.95.2",
+    "chai": "^6.2.2",
     "next": "16.0.10",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "react-hot-toast": "^2.6.0",
     "ws": "^8.18.3"
   },
   "devDependencies": {

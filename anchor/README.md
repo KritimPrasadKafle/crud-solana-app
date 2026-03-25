@@ -1,10 +1,10 @@
-# Anchor Vault Program
+# Anchor journal Program
 
-This template includes a simple SOL vault program built with [Anchor](https://www.anchor-lang.com/).
+This template includes a simple SOL journal program built with [Anchor](https://www.anchor-lang.com/).
 
 ## Pre-deployed Program
 
-The vault program is deployed on **devnet** at:
+The journal program is deployed on **devnet** at:
 
 ```
 F4jZpgbtTb6RWNWq6v35fUeiAsRJMrDczVPv9U23yXjB
@@ -20,21 +20,21 @@ To deploy your own version of the program:
 
 ```bash
 cd anchor
-solana-keygen new -o target/deploy/vault-keypair.json
+solana-keygen new -o target/deploy/journal-keypair.json
 ```
 
 ### 2. Get the new program ID
 
 ```bash
-solana address -k target/deploy/vault-keypair.json
+solana address -k target/deploy/journal-keypair.json
 ```
 
 ### 3. Update the program ID
 
 Update the program ID in these files:
 
-- `anchor/Anchor.toml` - Update `vault = "..."` under `[programs.devnet]`
-- `anchor/programs/vault/src/lib.rs` - Update `declare_id!("...")`
+- `anchor/Anchor.toml` - Update `journal = "..."` under `[programs.devnet]`
+- `anchor/programs/journal/src/lib.rs` - Update `declare_id!("...")`
 
 ### 4. Build and deploy
 
@@ -56,16 +56,16 @@ cd ..
 npm run codama:js
 ```
 
-This updates the generated client code in `app/generated/vault/` with your new program ID.
+This updates the generated client code in `app/generated/journal/` with your new program ID.
 
 ## Program Overview
 
-The vault program allows users to:
+The journal program allows users to:
 
-- **Deposit**: Send SOL to a personal vault PDA (Program Derived Address)
-- **Withdraw**: Retrieve all SOL from your vault
+- **Deposit**: Send SOL to a personal journal PDA (Program Derived Address)
+- **Withdraw**: Retrieve all SOL from your journal
 
-Each user gets their own vault derived from their wallet address.
+Each user gets their own journal derived from their wallet address.
 
 ## Testing
 
